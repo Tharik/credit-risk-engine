@@ -1,0 +1,12 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/CreditRiskEngine.Api/CreditRiskEngine.Api.csproj" />
+    <Project Path="src/CreditRiskEngine.Application/CreditRiskEngine.Application.csproj" />
+    <Project Path="src/CreditRiskEngine.Domain/CreditRiskEngine.Domain.csproj" />
+    <Project Path="src/CreditRiskEngine.Infrastructure/CreditRiskEngine.Infrastructure.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/CreditRiskEngine.IntegrationTests/CreditRiskEngine.IntegrationTests.csproj" />
+    <Project Path="tests/CreditRiskEngine.UnitTests/CreditRiskEngine.UnitTests.csproj" />
+  </Folder>
+</Solution>

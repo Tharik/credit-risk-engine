@@ -1,0 +1,87 @@
+{
+  "clusters": [
+    {
+      "priority": 1,
+      "cluster": "ClusterA",
+      "name": "Diamond",
+      "minScore": 700,
+      "minAge": 25,
+      "maxAge": 60,
+      "requiresNoMarketDebt": true,
+      "denyIfDefaultDebtExists": false,
+      "baseLimit": 50000,
+      "cap": 100000
+    },
+    {
+      "priority": 2,
+      "cluster": "ClusterB",
+      "name": "Gold",
+      "minScore": 500,
+      "minAge": 18,
+      "maxAge": 65,
+      "requiresNoMarketDebt": false,
+      "denyIfDefaultDebtExists": true,
+      "baseLimit": 20000,
+      "cap": 40000
+    },
+    {
+      "priority": 3,
+      "cluster": "ClusterC",
+      "name": "Silver",
+      "minScore": 300,
+      "requiresNoMarketDebt": false,
+      "denyIfDefaultDebtExists": false,
+      "baseLimit": 5000,
+      "cap": 10000
+    },
+    {
+      "priority": 4,
+      "cluster": "ClusterD",
+      "name": "Bronze",
+      "requiresNoMarketDebt": false,
+      "denyIfDefaultDebtExists": false,
+      "baseLimit": 0,
+      "cap": 0
+    }
+  ],
+  "jobCategories": [
+    {
+      "priority": 1,
+      "category": "Executive",
+      "multiplier": 2.0,
+      "keywords": ["CEO", "CFO", "CTO", "COO", "CIO", "CMO", "Chief", "President", "Vice President", "VP", "Director"]
+    },
+    {
+      "priority": 2,
+      "category": "SeniorProfessional",
+      "multiplier": 1.5,
+      "keywords": ["Senior", "Lead", "Manager", "Coordinator", "Supervisor", "Principal"]
+    },
+    {
+      "priority": 3,
+      "category": "MidProfessional",
+      "multiplier": 1.0,
+      "keywords": ["Engineer", "Analyst", "Developer", "Specialist", "Designer", "Accountant", "Consultant", "Architect"]
+    },
+    {
+      "priority": 4,
+      "category": "JuniorProfessional",
+      "multiplier": 0.7,
+      "keywords": ["Junior", "Trainee", "Intern", "Apprentice", "Assistant", "Associate"]
+    },
+    {
+      "priority": 5,
+      "category": "Other",
+      "multiplier": 0.8,
+      "keywords": []
+    }
+  ],
+  "penalties": [
+    {
+      "priority": 1,
+      "ruleId": "DEFAULT_DEBT_PENALTY",
+      "triggerDebtTypes": ["credit_default", "loan_default"],
+      "penaltyFactor": 0.5
+    }
+  ]
+}
