@@ -1,4 +1,5 @@
 using System.Text.Json;
+using System.Text.Json.Serialization;
 using CreditRiskEngine.Domain.Interfaces;
 using CreditRiskEngine.Domain.Rules;
 
@@ -14,7 +15,11 @@ public class JsonRuleProvider : IRuleProvider
         _rulesFilePath = rulesFilePath;
         _jsonOptions = new JsonSerializerOptions
         {
-            PropertyNameCaseInsensitive = true
+            PropertyNameCaseInsensitive = true,
+            Converters =
+            {
+                new JsonStringEnumConverter()
+            }
         };
     }
 
