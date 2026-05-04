@@ -1,7 +1,7 @@
 using System.Net;
 using System.Net.Http.Json;
 using Microsoft.AspNetCore.Mvc.Testing;
-
+using System.Text.Json.Serialization;
 namespace CreditRiskEngine.IntegrationTests.Controllers;
 
 public class CustomersControllerTests : IClassFixture<WebApplicationFactory<Program>>
@@ -22,15 +22,15 @@ public class CustomersControllerTests : IClassFixture<WebApplicationFactory<Prog
             name = "John Doe",
             age = 35,
             score = 750,
-            hasMarketDebt = false,
-            marketDebtTypes = Array.Empty<string>(),
+            has_market_debt = false,
+            market_debt_types = Array.Empty<string>(),
             location = new
             {
                 city = "São Paulo",
                 state = "SP",
                 region = "Sudeste"
             },
-            jobTitle = "Senior Software Engineer"
+            job_title = "Senior Software Engineer"
         };
 
         var response = await _client.PostAsJsonAsync("/customers/classify", request);
@@ -56,15 +56,15 @@ public class CustomersControllerTests : IClassFixture<WebApplicationFactory<Prog
             name = "John Doe",
             age = 35,
             score = 1200,
-            hasMarketDebt = false,
-            marketDebtTypes = Array.Empty<string>(),
+            has_market_debt = false,
+            market_debt_types = Array.Empty<string>(),
             location = new
             {
                 city = "São Paulo",
                 state = "SP",
                 region = "Sudeste"
             },
-            jobTitle = "Senior Software Engineer"
+            job_title = "Senior Software Engineer"
         };
 
         var response = await _client.PostAsJsonAsync("/customers/classify", request);
@@ -79,8 +79,8 @@ public class CustomersControllerTests : IClassFixture<WebApplicationFactory<Prog
         {
             age = 35,
             score = 750,
-            hasMarketDebt = false,
-            marketDebtTypes = Array.Empty<string>(),
+            has_market_debt = false,
+            market_debt_types = Array.Empty<string>(),
             location = new
             {
                 city = "São Paulo",
@@ -96,14 +96,19 @@ public class CustomersControllerTests : IClassFixture<WebApplicationFactory<Prog
 
     private class CustomerClassificationTestResponse
     {
+        [JsonPropertyName("cluster_id")]
         public string ClusterId { get; set; } = string.Empty;
 
+        [JsonPropertyName("cluster_name")]
         public string ClusterName { get; set; } = string.Empty;
 
+        [JsonPropertyName("job_category")]
         public string JobCategory { get; set; } = string.Empty;
 
+        [JsonPropertyName("approved_limit")]
         public decimal ApprovedLimit { get; set; }
 
+        [JsonPropertyName("approved")]
         public bool Approved { get; set; }
     }
 }

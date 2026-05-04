@@ -84,42 +84,72 @@
       "CustomerClassificationResponse": {
         "type": "object",
         "properties": {
-          "customer": {
-            "$ref": "#/components/schemas/CustomerRequest"
-          },
-          "clusterId": {
+          "id": {
             "type": "string",
             "nullable": true
           },
-          "clusterName": {
+          "name": {
             "type": "string",
             "nullable": true
           },
-          "jobCategory": {
+          "age": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "score": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "has_market_debt": {
+            "type": "boolean"
+          },
+          "market_debt_types": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          },
+          "location": {
+            "$ref": "#/components/schemas/LocationRequest"
+          },
+          "job_title": {
             "type": "string",
             "nullable": true
           },
-          "jobMultiplier": {
+          "cluster_id": {
+            "type": "string",
+            "nullable": true
+          },
+          "cluster_name": {
+            "type": "string",
+            "nullable": true
+          },
+          "job_category": {
+            "type": "string",
+            "nullable": true
+          },
+          "job_multiplier": {
             "type": "number",
             "format": "double"
           },
-          "monthlyIncome": {
+          "monthly_income": {
             "type": "number",
             "format": "double"
           },
-          "baseLimit": {
+          "base_limit": {
             "type": "number",
             "format": "double"
           },
-          "penaltyFactor": {
+          "penalty_factor": {
             "type": "number",
             "format": "double"
           },
-          "approvedLimit": {
+          "approved_limit": {
             "type": "number",
             "format": "double"
           },
-          "clusterCap": {
+          "cluster_cap": {
             "type": "number",
             "format": "double"
           },
@@ -148,10 +178,10 @@
             "type": "integer",
             "format": "int32"
           },
-          "hasMarketDebt": {
+          "has_market_debt": {
             "type": "boolean"
           },
-          "marketDebtTypes": {
+          "market_debt_types": {
             "type": "array",
             "items": {
               "type": "string"
@@ -161,7 +191,7 @@
           "location": {
             "$ref": "#/components/schemas/LocationRequest"
           },
-          "jobTitle": {
+          "job_title": {
             "type": "string",
             "nullable": true
           }

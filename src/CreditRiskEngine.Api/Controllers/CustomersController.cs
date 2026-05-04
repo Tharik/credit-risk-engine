@@ -64,7 +64,15 @@ public class CustomersController : ControllerBase
     {
         return new CustomerClassificationResponse
         {
-            Customer = request,
+            Id = request.Id,
+            Name = request.Name,
+            Age = request.Age,
+            Score = request.Score,
+            HasMarketDebt = request.HasMarketDebt,
+            MarketDebtTypes = request.MarketDebtTypes,
+            Location = request.Location,
+            JobTitle = request.JobTitle,
+
             ClusterId = result.Cluster.ToString(),
             ClusterName = result.ClusterName,
             JobCategory = result.JobCategory.ToString(),
