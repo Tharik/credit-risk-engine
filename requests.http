@@ -1,0 +1,134 @@
+@baseUrl = http://localhost:8080
+
+### Cluster A / Diamond
+POST {{baseUrl}}/customers/classify
+Content-Type: application/json
+
+{
+  "id": "customer-001",
+  "name": "John Doe",
+  "age": 35,
+  "score": 750,
+  "has_market_debt": false,
+  "market_debt_types": [],
+  "location": {
+    "city": "São Paulo",
+    "state": "SP",
+    "region": "Sudeste"
+  },
+  "job_title": "Senior Software Engineer"
+}
+
+### Cluster B / Gold
+POST {{baseUrl}}/customers/classify
+Content-Type: application/json
+
+{
+  "id": "customer-002",
+  "name": "Maria Silva",
+  "age": 40,
+  "score": 650,
+  "has_market_debt": true,
+  "market_debt_types": ["credit_card"],
+  "location": {
+    "city": "Rio de Janeiro",
+    "state": "RJ",
+    "region": "Sudeste"
+  },
+  "job_title": "Software Engineer"
+}
+
+### Cluster C with penalty
+POST {{baseUrl}}/customers/classify
+Content-Type: application/json
+
+{
+  "id": "customer-003",
+  "name": "Carlos Souza",
+  "age": 30,
+  "score": 350,
+  "has_market_debt": true,
+  "market_debt_types": ["credit_default"],
+  "location": {
+    "city": "Curitiba",
+    "state": "PR",
+    "region": "Sul"
+  },
+  "job_title": "Analyst"
+}
+
+### Cluster D / denied
+POST {{baseUrl}}/customers/classify
+Content-Type: application/json
+
+{
+  "id": "customer-004",
+  "name": "Ana Lima",
+  "age": 22,
+  "score": 250,
+  "has_market_debt": true,
+  "market_debt_types": ["loan_default"],
+  "location": {
+    "city": "Salvador",
+    "state": "BA",
+    "region": "Nordeste"
+  },
+  "job_title": "Assistant"
+}
+
+### Priority test: Senior Director should be Executive
+POST {{baseUrl}}/customers/classify
+Content-Type: application/json
+
+{
+  "id": "customer-005",
+  "name": "Robert Smith",
+  "age": 45,
+  "score": 800,
+  "has_market_debt": false,
+  "market_debt_types": [],
+  "location": {
+    "city": "Florianópolis",
+    "state": "SC",
+    "region": "Sul"
+  },
+  "job_title": "Senior Director"
+}
+
+### Invalid score - should return 400
+POST {{baseUrl}}/customers/classify
+Content-Type: application/json
+
+{
+  "id": "customer-006",
+  "name": "Invalid Score",
+  "age": 35,
+  "score": 1200,
+  "has_market_debt": false,
+  "market_debt_types": [],
+  "location": {
+    "city": "São Paulo",
+    "state": "SP",
+    "region": "Sudeste"
+  },
+  "job_title": "Engineer"
+}
+
+### Invalid debt type - should return 400
+POST {{baseUrl}}/customers/classify
+Content-Type: application/json
+
+{
+  "id": "customer-007",
+  "name": "Invalid Debt",
+  "age": 35,
+  "score": 700,
+  "has_market_debt": true,
+  "market_debt_types": ["unknown_debt"],
+  "location": {
+    "city": "São Paulo",
+    "state": "SP",
+    "region": "Sudeste"
+  },
+  "job_title": "Engineer"
+}

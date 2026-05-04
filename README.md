@@ -236,6 +236,21 @@ Interactive API documentation is automatically available via Swagger UI when the
 
 ---
 
+## Manual HTTP Requests
+
+A `requests.http` file is available at the repository root with ready-to-run sample scenarios.
+
+It can be executed using IDEs/editors that support `.http` files, such as Visual Studio Code with the REST Client extension or JetBrains Rider.
+
+The file includes examples for:
+
+- Cluster A, B, C, and D classification
+- Job category priority validation
+- Invalid score validation
+- Invalid debt type validation
+
+---
+
 # 🔄 CI/CD
 
 GitHub Actions pipeline includes:
