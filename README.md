@@ -208,7 +208,7 @@ Coverage includes:
 ## Run Tests
 
 ```bash
-dotnet test --configuration Release --no-build --logger "console;verbosity=normal"
+dotnet test --configuration Release --no-build --logger "trx" --results-directory TestResults
 ```
 
 ---
@@ -240,10 +240,13 @@ Interactive API documentation is automatically available via Swagger UI when the
 
 GitHub Actions pipeline includes:
 
-* Restore
-* Build
-* Test
-* Docker build validation
+* Dependency restore
+* Full build validation
+* Unit and integration test execution
+* Published test reports with pass/fail visibility
+* Docker image build verification
+
+Detailed test reports are automatically published within GitHub Actions for improved validation visibility.
 
 Workflow file:
 

@@ -7,6 +7,11 @@ on:
       - master
   pull_request:
 
+permissions:
+  contents: read
+  checks: write
+  actions: read
+
 jobs:
   build-test:
     name: Build and test
@@ -21,17 +26,26 @@ jobs:
         with:
           dotnet-version: 8.0.x
 
+      - name: Show .NET version
+        run: dotnet --version
+
       - name: Restore dependencies
-        run: |
-          dotnet restore src/CreditRiskEngine.Api/CreditRiskEngine.Api.csproj
-          dotnet restore tests/CreditRiskEngine.UnitTests/CreditRiskEngine.UnitTests.csproj
-          dotnet restore tests/CreditRiskEngine.IntegrationTests/CreditRiskEngine.IntegrationTests.csproj
+        run: dotnet restore
 
       - name: Build solution
         run: dotnet build --configuration Release --no-restore
 
       - name: Run tests
-        run: dotnet test --configuration Release --no-build --logger "console;verbosity=normal"
+        run: dotnet test --configuration Release --no-build --logger "trx" --results-directory TestResults
+
+      - name: Publish test report
+        uses: dorny/test-reporter@v1
+        if: always()
+        with:
+          name: .NET Test Results
+          path: TestResults/*.trx
+          reporter: dotnet-trx
+          fail-on-error: true
 
       - name: Build Docker image
         run: docker build -t credit-risk-engine:ci .
