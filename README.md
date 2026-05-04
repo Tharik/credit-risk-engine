@@ -119,6 +119,7 @@ Contains:
 * Validation
 * Swagger
 
+> ℹ️ A generated OpenAPI specification (`swagger.json`) is also included for offline contract inspection.
 ---
 
 # ⚙️ Design Decisions
@@ -173,6 +174,8 @@ Configured categories:
 * Penalties
 
 This allows policy updates without core logic rewrites.
+
+> ℹ️ API request and response contracts were explicitly aligned with the challenge specification, including snake_case payload compatibility.
 
 ---
 
