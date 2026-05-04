@@ -208,7 +208,7 @@ Coverage includes:
 ## Run Tests
 
 ```bash
-dotnet test
+dotnet test --configuration Release --no-build --logger "console;verbosity=normal"
 ```
 
 ---
