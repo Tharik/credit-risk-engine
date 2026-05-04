@@ -58,6 +58,7 @@ All classification and financial rules are externally configurable through JSON 
 * Dockerized deployment
 * GitHub Actions CI pipeline
 * Non-root container runtime
+* Global exception handling middleware
 
 ---
 
@@ -231,6 +232,7 @@ docker compose up --build
 ```txt
 http://localhost:8080/swagger
 ```
+Interactive API documentation is automatically available via Swagger UI when the application is running.
 
 ---
 
@@ -293,6 +295,7 @@ Potential next steps:
 * Controlled configuration loading
 * Non-root containerization
 * Deterministic rule evaluation
+* Global exception handling to avoid leaking internal stack traces in API responses
 
 ---
 

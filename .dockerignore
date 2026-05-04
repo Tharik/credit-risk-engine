@@ -1,0 +1,14 @@
+bin/
+obj/
+.vs/
+.git/
+.gitignore
+.github/
+Dockerfile*
+docker-compose*
+README.md
+ai-journey/
+**/TestResults/
+**/*.user
+**/*.suo
+**/*.md

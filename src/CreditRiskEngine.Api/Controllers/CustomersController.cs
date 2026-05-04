@@ -18,9 +18,17 @@ public class CustomersController : ControllerBase
         _classificationService = classificationService;
     }
 
+    /// <summary>
+    /// Classifies a customer into a credit risk cluster,
+    /// calculates approved credit limit,
+    /// and estimates monthly income.
+    /// </summary>
+    /// <param name="request">Customer input payload.</param>
+    /// <returns>Enriched customer classification result.</returns>
     [HttpPost("classify")]
     [ProducesResponseType(typeof(CustomerClassificationResponse), StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    [ProducesResponseType(StatusCodes.Status500InternalServerError)]
     public ActionResult<CustomerClassificationResponse> Classify([FromBody] CustomerRequest request)
     {
         var customer = MapToDomain(request);
